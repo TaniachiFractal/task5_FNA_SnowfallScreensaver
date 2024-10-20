@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameEngine;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameEngine
+namespace SnowfallScreensaver
 {
     /// <summary>
     /// Класс приложения

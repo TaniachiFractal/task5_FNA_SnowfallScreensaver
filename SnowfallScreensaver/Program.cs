@@ -1,4 +1,4 @@
-﻿namespace GameEngine
+﻿namespace SnowfallScreensaver
 {
     /// <summary>
     /// Класс точки входа
@@ -10,7 +10,7 @@
         /// </summary>
         private static void Main()
         {
-            using (var app = new SnowfallApp())
+            using (var app = new ApplicationLogic())
             {
                 app.Run();
             }
