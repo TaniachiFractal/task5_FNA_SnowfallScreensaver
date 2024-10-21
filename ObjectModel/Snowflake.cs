@@ -33,6 +33,9 @@ namespace SnowfallModels
         /// </summary>
         public Color color;
 
+        /// <summary>
+        /// Сортировка по размеру снежинки
+        /// </summary>
         public int CompareTo(Snowflake other)
         {
             if (scale > other.scale)
