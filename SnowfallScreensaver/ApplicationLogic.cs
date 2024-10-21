@@ -1,5 +1,4 @@
-﻿using System;
-using GameEngine;
+﻿using GameEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,6 +16,7 @@ namespace SnowfallScreensaver
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Texture2D snowflakeTexture;
+        private Texture2D snowforestTexture;
         private MouseState previousMouseState;
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace SnowfallScreensaver
         #region parent functions
 
         /// <summary>
-        /// This function is automatically called when the App launches to initialize any non-graphic variables.
+        /// Инициализация списка снежинок и получение состояния компьютерной мыши и стандартная инициализация окна FNA 
         /// </summary>
         protected override void Initialize()
         {
@@ -52,19 +52,17 @@ namespace SnowfallScreensaver
         }
 
         /// <summary>
-        /// Automatically called when your App launches to load any App assets (graphics, audio etc.)
+        /// Инициализация списка спрайтов и загрузка картинок
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             snowflakeTexture = TextureLoader.Load("snowflake.png", Content);
+            snowforestTexture = TextureLoader.Load("snowforest.png", Content);
         }
 
         /// <summary>
-        /// Called each frame to update the App. Games usually runs 60 frames per second.
-        /// Each frame the Update function will run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
+        /// Функция обновления: обновить позиции снежинок и проверить состояние клавиатуры и мыши
         /// </summary>
         protected override void Update(GameTime gameTime)
         {
@@ -82,14 +80,15 @@ namespace SnowfallScreensaver
         }
 
         /// <summary>
-        /// This is called when the App is ready to draw to the screen, it's also called each frame.
+        /// Рендер приложения
         /// </summary>
         protected override void Draw(GameTime gameTime)
         {
-            //This will clear what's on the screen each frame, if we don't clear the screen will look like a mess:
             GraphicsDevice.Clear(Color.DarkBlue);
 
             spriteBatch.Begin();
+
+            spriteBatch.Draw(snowforestTexture, new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
 
             foreach (var snowflake in objectManager.GetSnowflakes())
             {
@@ -99,7 +98,7 @@ namespace SnowfallScreensaver
 
             spriteBatch.End();
 
-            //Draw the things FNA handles for us underneath the hood:
+            //Draw the things FNA handles for us underneath the hood
             base.Draw(gameTime);
         }
 
