@@ -1,4 +1,5 @@
-﻿using GameEngine;
+﻿using System;
+using GameEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -93,7 +94,7 @@ namespace SnowfallScreensaver
             foreach (var snowflake in objectManager.GetSnowflakes())
             {
                 var currSize = (int)(Const.SnowflakeSize * snowflake.scale);
-                spriteBatch.Draw(snowflakeTexture, new Rectangle(snowflake.X, snowflake.Y, currSize, currSize), Color.White);
+                spriteBatch.Draw(snowflakeTexture, new Rectangle(snowflake.X, snowflake.Y, currSize, currSize), snowflake.color);
             }
 
             spriteBatch.End();

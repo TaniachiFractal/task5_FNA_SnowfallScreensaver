@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ObjectManager.Additions;
 using ObjectManager.Interfaces;
 using ObjectMemory.Interfaces;
 using SnowfallModels;
@@ -34,6 +35,7 @@ namespace ObjectManager
             {
                 snowflakes.Add(NewSnowflake(rnd));
             }
+            snowflakes.Sort();
         }
 
         /// <inheritdoc/>
@@ -68,11 +70,12 @@ namespace ObjectManager
         {
             var snowflake = new Snowflake
             {
-                scale = 0.1f * rnd.Next(1, 20), // модификатор размера от 0.1 до 2
+                scale = (float)(rnd.NextDouble() * 2 + 0.1), // модификатор размера от 0.1 до 2.1
                 X = rnd.Next(-Const.SnowflakeSize, fieldWidth + Const.SnowflakeSize), // от края до края поля с отступом на стандарный размер
                 Y = rnd.Next(-fieldHeight, -Const.SnowflakeSize), // от минус размера поля до минус стандартного размера снежинки
+                color = SnowflakeColors.Colors[rnd.Next(SnowflakeColors.Colors.Length)]
             };
-            snowflake.speed = (int)(snowflake.scale * Const.SnowflakeSize * 0.1); // скорсть - 1/10 размера
+            snowflake.speed = (int)(snowflake.scale * Const.SnowflakeSize * 0.1); // скорсть - 0.1 размера
 
             return snowflake;
         }

@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Additions\SnowflakeColors.cs" />
     <Compile Include="Interfaces\IObjectManager.cs" />
     <Compile Include="SnowflakeObjectManager.cs" />
   </ItemGroup>

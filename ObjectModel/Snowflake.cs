@@ -1,9 +1,12 @@
-﻿namespace SnowfallModels
+﻿using System;
+using Microsoft.Xna.Framework;
+
+namespace SnowfallModels
 {
     /// <summary>
     /// Класс снежинки
     /// </summary>
-    public class Snowflake
+    public class Snowflake : IComparable<Snowflake>
     {
         /// <summary>
         /// Позиция снежинки по горизонтали
@@ -24,5 +27,19 @@
         /// Скорость снежинки
         /// </summary>
         public int speed;
+
+        /// <summary>
+        /// Оттенок снежинки
+        /// </summary>
+        public Color color;
+
+        public int CompareTo(Snowflake other)
+        {
+            if (scale > other.scale)
+            { return 1; }
+            if (scale < other.scale)
+            { return -1; }
+            return 0;
+        }
     }
 }
