@@ -62,6 +62,18 @@
       <Project>{52ea3a49-df66-4b3c-9057-c08957657e9b}</Project>
       <Name>GameEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ObjectManager\ObjectManager.csproj">
+      <Project>{986EE72B-30EB-49AA-926D-A1EEE730F080}</Project>
+      <Name>ObjectManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectMemory\ObjectMemory.csproj">
+      <Project>{6D6C860D-0BF5-4930-823D-D420A59126DD}</Project>
+      <Name>ObjectMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectModel\SnowfallModels.csproj">
+      <Project>{DF70F44B-E912-4006-A156-0BA20F54E519}</Project>
+      <Name>SnowfallModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

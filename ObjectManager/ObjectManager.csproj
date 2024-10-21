@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52EA3A49-DF66-4B3C-9057-C08957657E9B}</ProjectGuid>
+    <ProjectGuid>{986EE72B-30EB-49AA-926D-A1EEE730F080}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>GameEngine</RootNamespace>
-    <AssemblyName>GameEngine</AssemblyName>
+    <RootNamespace>ObjectManager</RootNamespace>
+    <AssemblyName>ObjectManager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -40,20 +40,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utilities\Camera.cs" />
-    <Compile Include="Utilities\Resolution.cs" />
-    <Compile Include="Utilities\TextureLoader.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="FNA, Version=24.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FNA">
       <HintPath>..\FNA.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Interfaces\IObjectManager.cs" />
+    <Compile Include="SnowflakeObjectManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectMemory\ObjectMemory.csproj">
+      <Project>{6D6C860D-0BF5-4930-823D-D420A59126DD}</Project>
+      <Name>ObjectMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectModel\SnowfallModels.csproj">
+      <Project>{df70f44b-e912-4006-a156-0ba20f54e519}</Project>
+      <Name>SnowfallModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
 </Project>

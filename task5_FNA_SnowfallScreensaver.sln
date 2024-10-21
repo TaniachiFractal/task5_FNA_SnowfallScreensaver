@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "GameEngine\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnowfallScreensaver", "SnowfallScreensaver\SnowfallScreensaver.csproj", "{FC4AF14D-761F-4C5E-AA6F-01F9725C3F86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectMemory", "ObjectMemory\ObjectMemory.csproj", "{6D6C860D-0BF5-4930-823D-D420A59126DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectManager", "ObjectManager\ObjectManager.csproj", "{986EE72B-30EB-49AA-926D-A1EEE730F080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnowfallModels", "ObjectModel\SnowfallModels.csproj", "{DF70F44B-E912-4006-A156-0BA20F54E519}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{FC4AF14D-761F-4C5E-AA6F-01F9725C3F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC4AF14D-761F-4C5E-AA6F-01F9725C3F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC4AF14D-761F-4C5E-AA6F-01F9725C3F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6C860D-0BF5-4930-823D-D420A59126DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6C860D-0BF5-4930-823D-D420A59126DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6C860D-0BF5-4930-823D-D420A59126DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6C860D-0BF5-4930-823D-D420A59126DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986EE72B-30EB-49AA-926D-A1EEE730F080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986EE72B-30EB-49AA-926D-A1EEE730F080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986EE72B-30EB-49AA-926D-A1EEE730F080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986EE72B-30EB-49AA-926D-A1EEE730F080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF70F44B-E912-4006-A156-0BA20F54E519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF70F44B-E912-4006-A156-0BA20F54E519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF70F44B-E912-4006-A156-0BA20F54E519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF70F44B-E912-4006-A156-0BA20F54E519}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

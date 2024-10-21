@@ -1,7 +1,10 @@
-﻿using GameEngine;
+﻿using System;
+using GameEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ObjectManager.Interfaces;
+using SnowfallModels.Additions;
 
 namespace SnowfallScreensaver
 {
@@ -10,32 +13,41 @@ namespace SnowfallScreensaver
     /// </summary>
     public class ApplicationLogic : Game
     {
+        private readonly IObjectManager objectManager;
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Texture2D snowflake;
-        private Vector2 snowflakePosition;
+        private Texture2D snowflakeTexture;
+        private MouseState previousMouseState;
 
         /// <summary>
-        /// This is the constructor, this function is called whenever the App class is created.
+        /// Конструктор приложения
         /// </summary>
-        public ApplicationLogic()
+        public ApplicationLogic(IObjectManager objectManager)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
 
             graphics.ApplyChanges();
+
+            this.objectManager = objectManager;
+            objectManager.SetFieldSize(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
         }
+
+        #region parent functions
 
         /// <summary>
         /// This function is automatically called when the App launches to initialize any non-graphic variables.
         /// </summary>
         protected override void Initialize()
         {
-            snowflakePosition = new Vector2(640, 360);
+            objectManager.GenerateSnowflakes();
+
+            previousMouseState = Mouse.GetState();
+
             base.Initialize();
         }
 
@@ -46,8 +58,7 @@ namespace SnowfallScreensaver
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            snowflake = TextureLoader.Load("snowflake.png", Content);
+            snowflakeTexture = TextureLoader.Load("snowflake.png", Content);
         }
 
         /// <summary>
@@ -57,18 +68,16 @@ namespace SnowfallScreensaver
         /// </summary>
         protected override void Update(GameTime gameTime)
         {
-            Input.Update();
+            objectManager.UpdateSnowflakes();
 
-            if (Input.IsKeyDown(Keys.Left))
-            {
-                snowflakePosition.X -= 5;
-            }
-            else if (Input.IsKeyDown(Keys.Right))
-            {
-                snowflakePosition.X += 5;
-            }
+            if (Keyboard.GetState().GetPressedKeys().Length > 0) // Закрыться, если нажали какую-то кнопку
+            { Exit(); }
 
-            //Update the things FNA handles for us underneath the hood:
+            var currentMouseState = Mouse.GetState(); // Закрыться, если двинулась мышь
+            if (currentMouseState != previousMouseState)
+            { Exit(); }
+            previousMouseState = currentMouseState;
+
             base.Update(gameTime);
         }
 
@@ -82,13 +91,19 @@ namespace SnowfallScreensaver
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(snowflake, snowflakePosition, Color.White);
+            foreach (var snowflake in objectManager.GetSnowflakes())
+            {
+                var currSize = (int)(Const.SnowflakeSize * snowflake.scale);
+                spriteBatch.Draw(snowflakeTexture, new Rectangle(snowflake.X, snowflake.Y, currSize, currSize), Color.White);
+            }
 
             spriteBatch.End();
 
             //Draw the things FNA handles for us underneath the hood:
             base.Draw(gameTime);
         }
-    }
 
+        #endregion
+
+    }
 }

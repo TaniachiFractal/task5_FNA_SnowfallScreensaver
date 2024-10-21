@@ -1,4 +1,7 @@
-﻿namespace SnowfallScreensaver
+﻿using ObjectManager;
+using ObjectMemory;
+
+namespace SnowfallScreensaver
 {
     /// <summary>
     /// Класс точки входа
@@ -10,7 +13,9 @@
         /// </summary>
         private static void Main()
         {
-            using (var app = new ApplicationLogic())
+            var objectStorage = new SnowflakeObjectStorage();
+            var objectManager = new SnowflakeObjectManager(objectStorage);
+            using (var app = new ApplicationLogic(objectManager))
             {
                 app.Run();
             }
