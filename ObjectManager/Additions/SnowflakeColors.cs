@@ -10,7 +10,7 @@ namespace ObjectManager.Additions
         /// <summary>
         /// Список возможных цветов снежинок
         /// </summary>
-        public static readonly Color[] Colors = {
+        public readonly static Color[] Colors = {
             Color.AliceBlue,
             Color.Azure,
             Color.FloralWhite,

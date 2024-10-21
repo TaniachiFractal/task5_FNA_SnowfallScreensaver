@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 namespace SnowfallModels
 {
     /// <summary>
-    /// Класс снежинки
+    /// Класс снежинки; Сортируется по размеру
     /// </summary>
     public class Snowflake : IComparable<Snowflake>
     {
